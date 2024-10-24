@@ -1,0 +1,102 @@
+.map-component{
+  //height: 100vh;
+
+  .map-svg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+  }
+
+  .top-btn-container{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .cancel-select{
+      font-family: "SBSansDisplay-SemiBold";
+      font-size: 16px;
+      padding: 15px 50px 20px;
+      border: none;
+      background: white;
+      border-radius: 0 0 15px 15px;
+      box-shadow: 0 0 8px white;
+      color: #a4a4a4;
+
+      &:active{
+        background: #dadada;
+      }
+    }
+  }
+
+  .filter-panel-container{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    //width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    .filter-panel{
+      width: 420px;
+      background: #fff;
+
+      .struction-name{
+        font-size: 20px;
+        padding: 25px 15px;
+      }
+      .form-filter{
+        h3{
+          margin-left: 15px;
+        }
+      }
+    }
+    .hidden-panel{
+      display: none;
+    }
+    .filter-button{
+      border-radius: 15px 0 0 0;
+      font-family: "SBSansDisplay-SemiBold";
+      color: #08ad08;
+      background: white;
+      border: none;
+      font-size: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 420px;
+      height: 80px;
+
+      &:active{
+        background: #e8e8e8;
+        color: #018101;
+      }
+    }
+    .filter-open{
+      font-family: "SBSansDisplay-SemiBold";
+      color: #ffffff;
+      background: #034402;
+      border: none;
+      font-size: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 420px;
+      height: 80px;
+
+      &:active{
+        background: #066e03;
+      }
+    }
+  }
+
+
+  //.map-image{
+  //  position: absolute;
+  //  width: 100%;
+  //  height: 100%;
+  //}
+}

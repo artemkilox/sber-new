@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "SBSansDisplay-Bold";
+  src: url("./resources/fonts/SBSansDisplay-Bold.ttf");
+}
+@font-face {
+  font-family: "SBSansDisplay-Light";
+  src: url("./resources/fonts/SBSansDisplay-Light.ttf");
+}
+@font-face {
+  font-family: "SBSansDisplay-Regular";
+  src: url("./resources/fonts/SBSansDisplay-Regular.ttf");
+}
+@font-face {
+  font-family: "SBSansDisplay-SemiBold";
+  src: url("./resources/fonts/SBSansDisplay-SemiBold.ttf");
+}
+@font-face {
+  font-family: "SBSansDisplay-Thin";
+  src: url("./resources/fonts/SBSansDisplay-Thin.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "SBSansDisplay-Regular";
+}
+
+/*# sourceMappingURL=index.css.map */

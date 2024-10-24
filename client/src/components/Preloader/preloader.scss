@@ -1,0 +1,42 @@
+#preloader {
+  height: 100vh;
+  width: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  background: white;
+
+  .preloader-content {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+      position: absolute;
+      width: 400px;
+      height: auto;
+    }
+    .preloader-circle{
+      width: 435px;
+      height: 435px;
+      border-radius: 50%;
+      box-shadow: 7.5px 7.5px 7.5px #08ad08;
+      animation: loading 2s forwards linear infinite;
+    }
+  }
+}
+
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,20 @@
+.list-modal-wrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list-modal-wrapper .list-modal {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+}
+.list-modal-wrapper .list-modal .list-modal-name {
+  font-size: 24px;
+}
+
+/*# sourceMappingURL=listModal.css.map */

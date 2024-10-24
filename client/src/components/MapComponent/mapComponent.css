@@ -1,0 +1,82 @@
+.map-component .map-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+}
+.map-component .top-btn-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.map-component .top-btn-container .cancel-select {
+  font-family: "SBSansDisplay-SemiBold";
+  font-size: 16px;
+  padding: 15px 50px 20px;
+  border: none;
+  background: white;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 8px white;
+  color: #a4a4a4;
+}
+.map-component .top-btn-container .cancel-select:active {
+  background: #dadada;
+}
+.map-component .filter-panel-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.map-component .filter-panel-container .filter-panel {
+  width: 420px;
+  background: #fff;
+}
+.map-component .filter-panel-container .filter-panel .struction-name {
+  font-size: 20px;
+  padding: 25px 15px;
+}
+.map-component .filter-panel-container .filter-panel .form-filter h3 {
+  margin-left: 15px;
+}
+.map-component .filter-panel-container .hidden-panel {
+  display: none;
+}
+.map-component .filter-panel-container .filter-button {
+  border-radius: 15px 0 0 0;
+  font-family: "SBSansDisplay-SemiBold";
+  color: #08ad08;
+  background: white;
+  border: none;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 80px;
+}
+.map-component .filter-panel-container .filter-button:active {
+  background: #e8e8e8;
+  color: #018101;
+}
+.map-component .filter-panel-container .filter-open {
+  font-family: "SBSansDisplay-SemiBold";
+  color: #ffffff;
+  background: #034402;
+  border: none;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 80px;
+}
+.map-component .filter-panel-container .filter-open:active {
+  background: #066e03;
+}
+
+/*# sourceMappingURL=mapComponent.css.map */
