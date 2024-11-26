@@ -1,8 +1,43 @@
+.map-component .interactive-controller {
+  position: absolute;
+  z-index: 1001;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.map-component .interactive-controller button {
+  position: relative;
+  margin: 2px 0;
+  width: 64px;
+  height: 64px;
+  background: rgba(223, 223, 223, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+.map-component .interactive-controller button svg {
+  padding: 7.5px;
+  width: 100%;
+  height: 100%;
+}
+.map-component .interactive-controller button:active {
+  background: rgba(122, 122, 122, 0.7);
+}
 .map-component .map-svg {
   position: absolute;
   width: 100%;
   height: 100%;
   background: black;
+}
+.map-component .clip-path {
+  opacity: 0;
+  animation: ani 2s forwards;
 }
 .map-component .top-btn-container {
   position: absolute;
@@ -19,6 +54,8 @@
   border-radius: 0 0 15px 15px;
   box-shadow: 0 0 8px white;
   color: #a4a4a4;
+  opacity: 0;
+  animation: ani 0.5s forwards;
 }
 .map-component .top-btn-container .cancel-select:active {
   background: #dadada;
@@ -77,6 +114,15 @@
 }
 .map-component .filter-panel-container .filter-open:active {
   background: #066e03;
+}
+
+@keyframes ani {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /*# sourceMappingURL=mapComponent.css.map */

@@ -1,0 +1,42 @@
+.apart-modal-wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 9999;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.apart-modal{
+    width: 80%;
+    height: 90%;
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    
+}
+.close-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+.close-btn{
+    background: none;
+    border: none;
+    font-size: 24px;
+}
+.apart-content img{
+    height: 100%;
+}
+.apart-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.apart-params{
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
