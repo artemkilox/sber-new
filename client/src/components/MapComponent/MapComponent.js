@@ -190,8 +190,17 @@ const MapComponent = () => {
             {showModal && <ListModal setShowModal={setShowModal} aparts={modalAparts}/>}
             {/* {showModal && <ListModal />} */}
             <svg className="map-svg" x={0} y={0} viewBox={`0 0 ${1920} ${1080}`} preserveAspectRatio="none">
-                {selectedBuilding && <clipPath id="selectBuildingPath"><path  d={selectedBuilding.path} /></clipPath>}
-                <image className="clip-path" xlinkHref={backImage} clipPath={selectedBuilding ? "url(#selectBuildingPath)" : ""}/>
+                {selectedBuilding && <clipPath id="noSelectedBuilding">
+                    <path  d={selectedBuilding.path} />
+                </clipPath>}
+                {selectedBuilding &&<clipPath id="midSelectedBuilding">
+                    <path  d={selectedBuilding.path} />
+                </clipPath>}
+                {selectedBuilding &&<clipPath id="selectBuildingPath">
+                    <path  d={selectedBuilding.path} />
+                </clipPath>}
+                {selectedBuilding && <image className="clip-path" xlinkHref={backImage}/>}
+                {!selectedBuilding && <image xlinkHref={backImage}/>}
                 {
                     buildings.map((building) =>
                         <Building

@@ -35,10 +35,6 @@
   height: 100%;
   background: black;
 }
-.map-component .clip-path {
-  opacity: 0;
-  animation: ani 2s forwards;
-}
 .map-component .top-btn-container {
   position: absolute;
   width: 100%;
@@ -115,7 +111,21 @@
 .map-component .filter-panel-container .filter-open:active {
   background: #066e03;
 }
+.map-component .clip-path {
+  transform: translateY(0);
+  background-position: left;
+  clip-path: url(#selectBuildingPath);
+  animation: anim-path 1.2s linear;
+}
 
+@keyframes anim-path {
+  0% {
+    transform: translateY(-1500px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 @keyframes ani {
   0% {
     opacity: 0;
