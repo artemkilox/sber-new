@@ -1,7 +1,6 @@
 const express = require('express')
 const cors = require('cors')
 const PORT = 5000
-const https = require('https');
 const fs = require('fs');
 
 // let jsonFile = require('./serverLog.json');
@@ -14,42 +13,21 @@ const PORRT_NAME = "COM3"
 // })
 
 const ex = require("xlsx");
+const {end} = require("nodemon");
 // const {json} = require("express");
 const workbook = ex.readFile("table.xlsx")
 const sheet = workbook.Sheets[workbook.SheetNames[0]]
 const jsa = ex.utils.sheet_to_json(sheet); // 629
 
 let logJSON = []
+let endQuery = 0
 
-// console.log(jsa)
 let selectedBuilding = ''
-
-// const getData = (url) => {
-//     return new Promise((resolve) => {
-//         fetch(url).then(res => res.json()).then(json => {
-//             // console.log(json)
-//             console.log("resolve")
-//             resolve(json)
-//             // return json
-//         })
-//     })
-// }
-
-const writeLogAparts = (aparts) => {
-    console.log("writing")
-    fs.writeFile("serverLog.json", JSON.stringify(aparts), 'utf8', (err) => {
-        if (err) console.log(err);
-        else {
-            console.log("File written successfully\n");
-        }
-    });
-}
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 app.get('/getAparts', async (req, res) => {
-
     // const url = 'https://172.20.240.25/api/v1/api/flats/' // Правильная
     const url = 'https://sbercity.ru/api/v1/api/flats/' // Тестовая новая
     // const url = 'https://172.220.240.25/api/v1/api/flats/' // Неправильная
@@ -57,9 +35,16 @@ app.get('/getAparts', async (req, res) => {
     const data = await new Promise((resolve) => {
         fetch(url).then(res => res.json()).then(json => {
             resolve(json)
-            // writeLogAparts("")
+            fs.writeFile("serverLog.json", "", 'utf8', (err) => {
+                if (err) console.log(err);
+                else {
+                    console.log("File written successfully\n");
+                }
+            });
         })
     })
+
+    endQuery = 0
 
     return res.json(data)
 })
@@ -68,40 +53,35 @@ app.get('/getLocal', (req, res) => {
         if (err){
             console.log(err);
         } else {
-            const json = JSON.parse(data); //now it an object
+            const json = JSON.parse(data);
             console.log(data)
             return res.json(json)
-            // obj.table.push({id: 2, square:3}); //add some data
-            // json = JSON.stringify(obj); //convert it back to json
-            // fs.writeFile('myjsonfile.json', json, 'utf8', callback); // write it back 
     }});
 })
-app.get('/getApartsLim/:offset', async (req, res) => {
-    const {offset} = req.params
+app.post('/getApartsLim/', async (req, res) => {
+    const {data} = req.body
+    const offset = data.offset
+    const limit = data.count
+    console.log(limit)
     const url = 'https://sbercity.ru/api/v1/api/flats/?limit=100&offset=' + offset
 
-    const data = await new Promise((resolve) => {
+    const info = await new Promise((resolve) => {
         fetch(url).then(res => res.json()).then(json => {
-            // console.log(json.results)
-
-            // fs.writeFile("serverLog.json", JSON.stringify(logJSON), 'utf8', (err) => {
-            //     if (err) console.log(err);
-            //     else {
-            //         console.log("File written successfully\n");
-            //     }
-            // });
+            endQuery++
             resolve(json)
         })
     })
+    logJSON.push(...info.results)
+    if(endQuery === limit){
+        fs.writeFile("serverLog.json", JSON.stringify(logJSON), 'utf8', (err) => {
+            if (err) console.log(err);
+            else {
+                console.log("File written successfully\n");
+            }
+        });
+    }
 
-    logJSON.push(...data.results)
-    //
-    // console.log(JSON.stringify(logJSON))
-    //
-    // writeLogAparts("aparts")
-
-    return res.json(data)
-
+    return res.json(info)
 })
 app.post('/', (req, res) => {
     const {data} = req.body
@@ -157,7 +137,9 @@ app.post('/manyAparts', (req, res) => {
 
 const start = async () => {
     try{
-        app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+        app.listen(PORT, function () {
+            console.log(`Server started on port ${PORT}`)
+        })
     } catch (e){
         console.log(e)
     }

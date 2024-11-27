@@ -110,7 +110,11 @@ const MapComponent = () => {
                     for(let i=0; i<iteration; i++){
                         const newPromise = new Promise((resolve) => {
                             setTimeout(() => {
-                                $host.get('/getApartsLim/' + i * 100).then(result => resolve(result))
+                                const data = {
+                                    offset: i * 100,
+                                    count: iteration
+                                }
+                                $host.post('/getApartsLim/', {data}).then(result => resolve(result))
                             }, 1000)
                         })
                         promiseArr.push(newPromise)
@@ -128,15 +132,12 @@ const MapComponent = () => {
                     })
                 }
             } else {
-                // /getLocal
                 console.log(result.data.error)
                 $host.get('/getLocal').then(result =>{
                     console.log(result)
                     setAparts(result.data)
                     setLoading(false)
                 })
-                // console.log(result.data.error)
-                // setLoading(false)
             }
         })
     }
@@ -150,12 +151,6 @@ const MapComponent = () => {
     }
 
     const handleBuilding = (item) => {
-        // if (selectedBuilding === item) {
-        //     setSelectedBuilding(null)
-        //     const data = item.name
-        //     // console.log(data)
-        //     $host.post('/building', {data})
-        // } else {
         if(selectedBuilding !== item){
             setTimeout(() => {
                 setCanCancel(true)
@@ -190,12 +185,6 @@ const MapComponent = () => {
             {showModal && <ListModal setShowModal={setShowModal} aparts={modalAparts}/>}
             {/* {showModal && <ListModal />} */}
             <svg className="map-svg" x={0} y={0} viewBox={`0 0 ${1920} ${1080}`} preserveAspectRatio="none">
-                {selectedBuilding && <clipPath id="noSelectedBuilding">
-                    <path  d={selectedBuilding.path} />
-                </clipPath>}
-                {selectedBuilding &&<clipPath id="midSelectedBuilding">
-                    <path  d={selectedBuilding.path} />
-                </clipPath>}
                 {selectedBuilding &&<clipPath id="selectBuildingPath">
                     <path  d={selectedBuilding.path} />
                 </clipPath>}
